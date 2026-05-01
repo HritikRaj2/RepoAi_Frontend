@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ───────────────────────────────────────── */
+:root {
+  --gh-bg: #0d1117;
+  --gh-card: #161b22;
+  --gh-border: #30363d;
+  --gh-text: #c9d1d9;
+  --gh-heading: #f0f6fc;
+  --gh-green: #238636;
+  --gh-yellow: #d29922;
+  --gh-red: #f85149;
+  --gh-blue: #58a6ff;
+  --gh-muted: #8b949e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gh-bg text-gh-text antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* ── Custom scrollbar ──────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gh-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gh-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gh-muted);
+}
+
+/* ── Selection ─────────────────────────────────── */
+::selection {
+  background-color: rgba(88, 166, 255, 0.3);
+  color: var(--gh-heading);
+}
+
+/* ── Markdown prose overrides ──────────────────── */
+.markdown-body {
+  @apply text-gh-text leading-relaxed;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  @apply text-gh-heading font-semibold mt-6 mb-3 pb-2 border-b border-gh-border;
+}
+.markdown-body h1 {
+  @apply text-2xl;
+}
+.markdown-body h2 {
+  @apply text-xl;
+}
+.markdown-body h3 {
+  @apply text-lg;
+}
+.markdown-body p {
+  @apply mb-4;
+}
+.markdown-body ul,
+.markdown-body ol {
+  @apply ml-6 mb-4;
+}
+.markdown-body ul {
+  @apply list-disc;
+}
+.markdown-body ol {
+  @apply list-decimal;
+}
+.markdown-body li {
+  @apply mb-1;
+}
+.markdown-body code {
+  @apply bg-gh-bg text-gh-red px-1.5 py-0.5 rounded text-sm font-mono;
+}
+.markdown-body pre {
+  @apply bg-gh-bg rounded-lg p-4 mb-4 overflow-x-auto border border-gh-border;
+}
+.markdown-body pre code {
+  @apply bg-transparent text-gh-text p-0;
+}
+.markdown-body blockquote {
+  @apply border-l-4 border-gh-border pl-4 text-gh-muted italic my-4;
+}
+.markdown-body a {
+  @apply text-gh-blue hover:underline;
+}
+.markdown-body table {
+  @apply w-full border-collapse mb-4;
+}
+.markdown-body table th,
+.markdown-body table td {
+  @apply border border-gh-border px-4 py-2 text-left;
+}
+.markdown-body table th {
+  @apply bg-gh-card text-gh-heading font-semibold;
+}
+.markdown-body table tr:nth-child(even) {
+  @apply bg-gh-card/50;
+}
+.markdown-body strong {
+  @apply text-gh-heading font-semibold;
+}
+.markdown-body hr {
+  @apply border-gh-border my-6;
+}
+
+/* ── Skeleton loader ───────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gh-card) 25%,
+    var(--gh-border) 50%,
+    var(--gh-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.375rem;
+}
